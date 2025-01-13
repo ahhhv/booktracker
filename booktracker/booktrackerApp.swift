@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct booktrackerApp: App {
+    @AppStorage("isOnboarding") var isOnboarding: Bool = true
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if isOnboarding {
+                OnboardingView(shouldShowOnboarding: $isOnboarding)
+            } else {
+                LoginView()
+            }
         }
     }
 }
