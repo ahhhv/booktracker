@@ -7,8 +7,8 @@ Book Tracker es una aplicación desarrollada en SwiftUI que permite a los usuari
 - **Búsqueda de libros**: Encuentra libros mediante la API de Google Books.
 - **Seguimiento de lanzamientos**: Clasifica los libros en:
   - Favoritos
-  - Lanzamientos pasados
   - Próximos lanzamientos
+  - Lanzamientos pasados
 - **Autenticación con Google**: Cada usuario puede iniciar sesión con su cuenta de Google, asegurando la privacidad de sus datos y personalizando su experiencia.
 
 ## Requisitos del sistema
