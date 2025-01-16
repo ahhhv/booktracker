@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct LoginView: View {
+    @Binding var shouldShowOnboarding: Bool
+    @State private var err : String = ""
+    
     var body: some View {
         ZStack {
             LinearGradient(
@@ -38,9 +41,9 @@ struct LoginView: View {
                 Button {
                     Task {
                         do {
-                            // do stuff
-                        } catch {
-                            print("Error signing in with Apple: \(error)")
+                            try await Authentication().googleOauth()
+                        } catch AuthenticationError.runtimeError(let errorMessage) {
+                            err = errorMessage
                         }
                     }
                 } label: {
@@ -48,13 +51,28 @@ struct LoginView: View {
                         .resizable()
                         .frame(width: 65, height: 65)
                 }
-                .padding(20)
+                .padding(50)
+                
+                Spacer()
+                
+                Button {
+                    shouldShowOnboarding = true
+                } label: {
+                    Text("Volver a ver el tutorial")
+                        .foregroundColor(.white)
+                        .fontWeight(.bold)
+                        .padding()
+                        .background(Color.red)
+                        .cornerRadius(10)
+                        .font(.callout)
+                }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .padding()
         }
     }
 }
 
 #Preview {
-    LoginView()
+    LoginView(shouldShowOnboarding: .constant(true))
 }
