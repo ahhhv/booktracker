@@ -19,6 +19,11 @@ struct BookTrackerTabView: View {
                 .tabItem {
                     Label("Buscar", systemImage: "text.page.badge.magnifyingglass")
                 }
+            
+            SettingsView()
+                .tabItem {
+                    Label("Opciones", systemImage: "gear")
+                }
         }
         .tint(.purple)
     }
