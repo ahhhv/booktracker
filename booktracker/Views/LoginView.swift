@@ -9,13 +9,12 @@ import SwiftUI
 
 struct LoginView: View {
     @Binding var shouldShowOnboarding: Bool
-    @State private var err : String = ""
+    @State private var err: String = ""
     
     var body: some View {
         ZStack {
             LinearGradient(
-                gradient: Gradient(colors: [Color.white, Color.orange, Color.red
-                                           ]),
+                gradient: Gradient(colors: [Color.white, Color.orange, Color.red]),
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
@@ -47,9 +46,12 @@ struct LoginView: View {
                         }
                     }
                 } label: {
-                    Image("dark-google-icon")
-                        .resizable()
-                        .frame(width: 65, height: 65)
+                    Text("Iniciar sesión con Google")
+                        .foregroundColor(.white)
+                        .fontWeight(.bold)
+                        .padding()
+                        .background(Color.blue)
+                        .cornerRadius(10)
                 }
                 .padding(50)
                 

@@ -9,7 +9,7 @@ import SwiftUI
 import FirebaseAuth
 
 struct PreLoginView: View {
-    @State private var userLoggedIn = (Auth.auth().currentUser != nil)
+    @State private var userLoggedIn = Auth.auth().currentUser != nil
     @Binding var shouldShowOnboarding: Bool
 
     var body: some View {
