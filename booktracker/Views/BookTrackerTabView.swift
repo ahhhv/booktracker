@@ -17,7 +17,7 @@ struct BookTrackerTabView: View {
 
             SearchView()
                 .tabItem {
-                    Label("Buscar", systemImage: "text.page.badge.magnifyingglass")
+                    Label("Search", systemImage: "text.page.badge.magnifyingglass")
                 }
             
             SettingsView()
