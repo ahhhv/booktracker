@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		90C3D1CD2D39A700003C32B6 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 90C3D1CC2D39A700003C32B6 /* GoogleSignIn */; };
+		90E9BFAD2D3A7A4800DE8EA0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 90E9BFAC2D3A7A4800DE8EA0 /* FirebaseAuth */; };
+		90E9BFAF2D3A7A4800DE8EA0 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 90E9BFAE2D3A7A4800DE8EA0 /* FirebaseFirestore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		90227F432D352F7F00976E2C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -29,9 +35,22 @@
 		90227F4C2D352F7F00976E2C /* booktrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = booktrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		90FB5B6D2D396BE700F12F05 /* Exceptions for "booktracker" folder in "booktracker" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 90227F312D352F7E00976E2C /* booktracker */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		90227F342D352F7E00976E2C /* booktracker */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				90FB5B6D2D396BE700F12F05 /* Exceptions for "booktracker" folder in "booktracker" target */,
+			);
 			path = booktracker;
 			sourceTree = "<group>";
 		};
@@ -52,6 +71,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90C3D1CD2D39A700003C32B6 /* GoogleSignIn in Frameworks */,
+				90E9BFAD2D3A7A4800DE8EA0 /* FirebaseAuth in Frameworks */,
+				90E9BFAF2D3A7A4800DE8EA0 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +134,9 @@
 			);
 			name = booktracker;
 			packageProductDependencies = (
+				90C3D1CC2D39A700003C32B6 /* GoogleSignIn */,
+				90E9BFAC2D3A7A4800DE8EA0 /* FirebaseAuth */,
+				90E9BFAE2D3A7A4800DE8EA0 /* FirebaseFirestore */,
 			);
 			productName = booktracker;
 			productReference = 90227F322D352F7E00976E2C /* booktracker.app */;
@@ -195,6 +220,10 @@
 			);
 			mainGroup = 90227F292D352F7E00976E2C;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				90C3D1CB2D39A700003C32B6 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				90E9BFAB2D3A7A4800DE8EA0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 90227F332D352F7E00976E2C /* Products */;
 			projectDirPath = "";
@@ -399,6 +428,7 @@
 				DEVELOPMENT_TEAM = DV45BK77HM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = booktracker/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Book Tracker";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -433,6 +463,7 @@
 				DEVELOPMENT_TEAM = DV45BK77HM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = booktracker/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Book Tracker";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -568,6 +599,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		90C3D1CB2D39A700003C32B6 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
+		90E9BFAB2D3A7A4800DE8EA0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.7.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		90C3D1CC2D39A700003C32B6 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 90C3D1CB2D39A700003C32B6 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		90E9BFAC2D3A7A4800DE8EA0 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 90E9BFAB2D3A7A4800DE8EA0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		90E9BFAE2D3A7A4800DE8EA0 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 90E9BFAB2D3A7A4800DE8EA0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 90227F2A2D352F7E00976E2C /* Project object */;
 }
