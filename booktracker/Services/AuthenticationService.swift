@@ -1,5 +1,5 @@
 //
-//  Authentication.swift
+//  AuthenticationService.swift
 //  booktracker
 //
 //  Created by Alex Hernández on 16/1/25.
@@ -10,8 +10,13 @@ import Firebase
 import FirebaseAuth
 import GoogleSignIn
 
+protocol AuthenticationServiceProtocol {
+    @MainActor
+    func googleOauth() async throws
+    func logout() async throws
+}
 
-struct Authentication {
+struct AuthenticationService:AuthenticationServiceProtocol {
     @MainActor
     func googleOauth() async throws {
         guard let clientID = FirebaseApp.app()?.options.clientID else {

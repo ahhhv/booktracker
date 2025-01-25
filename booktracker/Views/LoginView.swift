@@ -40,7 +40,7 @@ struct LoginView: View {
                 Button {
                     Task {
                         do {
-                            try await Authentication().googleOauth()
+                            try await AuthenticationService().googleOauth()
                         } catch AuthenticationError.runtimeError(let errorMessage) {
                             err = errorMessage
                         }

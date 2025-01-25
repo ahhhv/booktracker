@@ -24,7 +24,7 @@ struct SettingsView: View {
             Button{
                 Task {
                     do {
-                        try await Authentication().logout()
+                        try await AuthenticationService().logout()
                     } catch let e {
                         err = e.localizedDescription
                     }

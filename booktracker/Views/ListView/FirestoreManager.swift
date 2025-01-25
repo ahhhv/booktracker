@@ -32,7 +32,7 @@ class FirestoreManager {
                 let publisher = data["publisher"] as? String ?? ""
                 let publishedDate = data["publishedDate"] as? String ?? ""
                 let thumbnail = data["thumbnail"] as? String ?? ""
-                let pageCount = data["pageCount"] as? Int ?? .zero
+                _ = data["pageCount"] as? Int ?? .zero
                 let isbn13 = data["isbn13"] as? String ?? ""
                 let isbn10 = data["isbn10"] as? String ?? ""
                 
