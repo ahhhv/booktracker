@@ -14,7 +14,6 @@ struct RootView: View {
     @AppStorage("isOnboarding") var isOnboarding: Bool = true
     @State private var isCheckingSession = true
 
-
     var body: some View {
         Group {
             if isCheckingSession {
@@ -23,7 +22,7 @@ struct RootView: View {
                 if isOnboarding {
                     OnboardingView(shouldShowOnboarding: $isOnboarding)
                 } else {
-                    PreLoginView(shouldShowOnboarding: $isOnboarding)
+                    PreLoginView(authViewModel: authViewModel, shouldShowOnboarding: $isOnboarding)
                 }
             }
         }

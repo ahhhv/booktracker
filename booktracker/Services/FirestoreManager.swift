@@ -10,9 +10,8 @@ import FirebaseFirestore
 import Combine
 import Firebase
 
-@Observable
-class FirestoreManager {
-    var books: [Book] = []
+class FirestoreManager: ObservableObject {
+    @Published var books: [Book] = []
     
     init() {
         fetchBooks()

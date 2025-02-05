@@ -17,7 +17,7 @@ struct PreLoginView: View {
     var body: some View {
         ZStack {
             if userLoggedIn {
-                BookTrackerTabView()
+                BookTrackerTabView(authViewModel: authViewModel)
             } else {
                 LoginView(authViewModel: authViewModel, shouldShowOnboarding: $shouldShowOnboarding)
             }
@@ -35,5 +35,6 @@ struct PreLoginView: View {
 }
 
 #Preview {
-    PreLoginView(shouldShowOnboarding: .constant(true))
+    PreLoginView(authViewModel: AuthenticationViewModel(),
+                 shouldShowOnboarding: .constant(true))
 }

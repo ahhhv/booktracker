@@ -10,7 +10,7 @@ import SwiftUI
 
 @MainActor
 struct ListView: View {
-    var viewModel = FirestoreManager()
+    @StateObject var manager = FirestoreManager()
     @State private var isLoading: Bool = false
     @State private var errorMessage: String?
 
@@ -28,7 +28,7 @@ struct ListView: View {
                         .padding()
                 }
                 
-                if viewModel.books.isEmpty {
+                if manager.books.isEmpty {
                     VStack {
                         Image(systemName: "bookmark.slash")
                             .resizable()
@@ -43,7 +43,7 @@ struct ListView: View {
                 }
 
                 List {
-                    let upcomingBooks = viewModel.books.filter { book in
+                    let upcomingBooks = manager.books.filter { book in
                         guard let publishedDate = book.publishedDate else { return true } // Si no tiene fecha, lo consideramos futuro
                         let currentDate = Date()
                         return publishedDate.toDate()?.isAfter(currentDate) ?? true
@@ -62,7 +62,7 @@ struct ListView: View {
                     }
 
                     // Sección de libros ya publicados
-                    let publishedBooks = viewModel.books.filter { book in
+                    let publishedBooks = manager.books.filter { book in
                         guard let publishedDate = book.publishedDate else { return false } // Ignorar si no tiene fecha
                         let currentDate = Date()
                         return publishedDate.toDate()?.isBeforeOrEqual(currentDate) ?? false
@@ -84,8 +84,8 @@ struct ListView: View {
                 .listStyle(GroupedListStyle())
                 .navigationTitle("Listado")
             }
-            .onAppear(perform: viewModel.fetchBooks)
-            .refreshable { viewModel.fetchBooks() }
+            .onAppear(perform: manager.fetchBooks)
+            .refreshable { manager.fetchBooks() }
         }
     }
     
