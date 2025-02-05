@@ -14,7 +14,7 @@ final class AuthenticationViewModel: ObservableObject {
 
     private let authenticationService: AuthenticationServiceProtocol
 
-    init(authenticationService: AuthenticationServiceProtocol) {
+    init(authenticationService: AuthenticationServiceProtocol = AuthenticationService()) {
         self.authenticationService = authenticationService
         self.isAuthenticated = Auth.auth().currentUser != nil
     }
@@ -35,6 +35,7 @@ final class AuthenticationViewModel: ObservableObject {
             isAuthenticated = false
         } catch {
             errorMessage = error.localizedDescription
+            isAuthenticated = true
         }
     }
 }

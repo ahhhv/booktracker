@@ -9,6 +9,8 @@ import SwiftUI
 import FirebaseAuth
 
 struct PreLoginView: View {
+    
+    @ObservedObject var authViewModel: AuthenticationViewModel
     @State private var userLoggedIn = Auth.auth().currentUser != nil
     @Binding var shouldShowOnboarding: Bool
 
@@ -17,7 +19,7 @@ struct PreLoginView: View {
             if userLoggedIn {
                 BookTrackerTabView()
             } else {
-                LoginView(shouldShowOnboarding: $shouldShowOnboarding)
+                LoginView(authViewModel: authViewModel, shouldShowOnboarding: $shouldShowOnboarding)
             }
         }
         .onAppear {

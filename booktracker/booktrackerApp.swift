@@ -12,18 +12,11 @@ import GoogleSignIn
 @main
 struct booktrackerApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @AppStorage("isOnboarding") var isOnboarding: Bool = true
     
     var body: some Scene {
         WindowGroup {
-            if isOnboarding {
-                OnboardingView(shouldShowOnboarding: $isOnboarding)
-            } else {
-                PreLoginView(shouldShowOnboarding: $isOnboarding)
-            }
-            
+            RootView()
         }
-        
     }
 }
 

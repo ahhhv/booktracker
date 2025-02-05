@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct LoginView: View {
+    
+    @ObservedObject var authViewModel: AuthenticationViewModel
     @Binding var shouldShowOnboarding: Bool
     @State private var err: String = ""
     
@@ -39,11 +41,7 @@ struct LoginView: View {
                 
                 Button {
                     Task {
-                        do {
-                            try await AuthenticationService().googleOauth()
-                        } catch AuthenticationError.runtimeError(let errorMessage) {
-                            err = errorMessage
-                        }
+                        await authViewModel.loginWithGoogle()
                     }
                 } label: {
                     Text("Iniciar sesión con Google")
@@ -76,5 +74,5 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView(shouldShowOnboarding: .constant(true))
+    LoginView(authViewModel: AuthenticationViewModel(), shouldShowOnboarding: .constant(true))
 }

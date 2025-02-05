@@ -9,6 +9,8 @@ import SwiftUI
 import FirebaseAuth
 
 struct SettingsView: View {
+    
+    @ObservedObject var authViewModel: AuthenticationViewModel
     @State private var err : String = ""
     
     var body: some View {
@@ -24,7 +26,7 @@ struct SettingsView: View {
             Button{
                 Task {
                     do {
-                        try await AuthenticationService().logout()
+                         await authViewModel.logout()
                     } catch let e {
                         err = e.localizedDescription
                     }
@@ -39,5 +41,5 @@ struct SettingsView: View {
 }
 
 #Preview {
-    SettingsView()
+    SettingsView(authViewModel: AuthenticationViewModel())
 }
