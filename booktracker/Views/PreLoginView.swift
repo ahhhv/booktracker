@@ -9,15 +9,17 @@ import SwiftUI
 import FirebaseAuth
 
 struct PreLoginView: View {
+    
+    @ObservedObject var authViewModel: AuthenticationViewModel
     @State private var userLoggedIn = Auth.auth().currentUser != nil
     @Binding var shouldShowOnboarding: Bool
 
     var body: some View {
         ZStack {
             if userLoggedIn {
-                BookTrackerTabView()
+                BookTrackerTabView(authViewModel: authViewModel)
             } else {
-                LoginView(shouldShowOnboarding: $shouldShowOnboarding)
+                LoginView(authViewModel: authViewModel, shouldShowOnboarding: $shouldShowOnboarding)
             }
         }
         .onAppear {
@@ -33,5 +35,6 @@ struct PreLoginView: View {
 }
 
 #Preview {
-    PreLoginView(shouldShowOnboarding: .constant(true))
+    PreLoginView(authViewModel: AuthenticationViewModel(),
+                 shouldShowOnboarding: .constant(true))
 }

@@ -9,6 +9,8 @@ import SwiftUI
 import FirebaseAuth
 
 struct SettingsView: View {
+    @StateObject var settingsViewModel = SettingsViewModel()
+    @ObservedObject var authViewModel: AuthenticationViewModel
     @State private var err : String = ""
     
     var body: some View {
@@ -17,14 +19,21 @@ struct SettingsView: View {
                 Image(systemName: "hand.wave.fill")
                 Text(
                     "Hello " +
-                    (Auth.auth().currentUser!.displayName ?? "Username not found")
+                    (Auth.auth().currentUser?.displayName ?? "Username not found")
                 )
+            }
+            
+            // Enable notifications
+            Form {
+                Toggle(isOn: settingsViewModel.$notificationsActivated) {
+                    Text("Enable notifications")
+                }
             }
             
             Button{
                 Task {
                     do {
-                        try await Authentication().logout()
+                         await authViewModel.logout()
                     } catch let e {
                         err = e.localizedDescription
                     }
@@ -39,5 +48,5 @@ struct SettingsView: View {
 }
 
 #Preview {
-    SettingsView()
+    SettingsView(authViewModel: AuthenticationViewModel())
 }

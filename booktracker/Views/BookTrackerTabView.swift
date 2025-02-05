@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct BookTrackerTabView: View {
+    
+    @ObservedObject var authViewModel: AuthenticationViewModel
+
     var body: some View {
         TabView {
             ListView()
@@ -17,10 +20,10 @@ struct BookTrackerTabView: View {
 
             SearchView()
                 .tabItem {
-                    Label("Buscar", systemImage: "text.page.badge.magnifyingglass")
+                    Label("Search", systemImage: "text.page.badge.magnifyingglass")
                 }
             
-            SettingsView()
+            SettingsView(authViewModel: authViewModel)
                 .tabItem {
                     Label("Opciones", systemImage: "gear")
                 }
@@ -30,5 +33,5 @@ struct BookTrackerTabView: View {
 }
 
 #Preview {
-    BookTrackerTabView()
+    BookTrackerTabView(authViewModel: AuthenticationViewModel())
 }
